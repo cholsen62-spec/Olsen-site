@@ -10,38 +10,44 @@
 body {
     margin:0;
     font-family: Arial;
-    background: #0a0a0f;
+    background: radial-gradient(circle, #0b0b14, #000);
     color:white;
 }
 
-/* MENU */
-.menu {
-    position: fixed;
+/* NAV */
+nav {
+    position:fixed;
     top:0;
     width:100%;
-    background: rgba(20,20,30,0.9);
     display:flex;
-    justify-content: space-around;
-    padding:15px;
+    justify-content:space-around;
+    background:rgba(20,20,30,0.9);
+    padding:12px;
     backdrop-filter: blur(10px);
 }
 
-.menu button {
+nav button {
     background:none;
     border:none;
     color:white;
     font-size:14px;
 }
 
-/* SECTIONS */
+/* PAGE */
 section {
-    padding:80px 20px;
+    display:none;
+    padding:90px 20px;
     max-width:900px;
     margin:auto;
 }
 
+.active {
+    display:block;
+}
+
+/* CARD */
 .card {
-    background: rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.05);
     padding:20px;
     border-radius:12px;
     margin-top:15px;
@@ -52,85 +58,82 @@ textarea {
     width:100%;
     height:120px;
     background:#111;
-    color:white;
     border:none;
+    color:white;
     padding:10px;
     border-radius:10px;
 }
 
 /* BUTTON */
-.btn {
+button.post {
     padding:10px 15px;
-    background:linear-gradient(90deg,#7a4dff,#ff4df0);
-    border:none;
-    color:white;
-    border-radius:20px;
     margin-top:10px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(90deg,#7a4dff,#ff4df0);
+    color:white;
 }
 
-/* POSTS */
+/* POST */
 .post {
-    background:#151520;
+    background:#151525;
     padding:15px;
-    border-radius:10px;
     margin-top:10px;
+    border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="menu">
-    <button onclick="show('home')">🏠 Accueil</button>
-    <button onclick="show('ai')">🤖 IA</button>
-    <button onclick="show('posts')">📸 Posts</button>
-    <button onclick="show('library')">📚 Librairie</button>
-</div>
+<nav>
+    <button onclick="go('home')">🏠</button>
+    <button onclick="go('ai')">🤖</button>
+    <button onclick="go('posts')">📸</button>
+    <button onclick="go('library')">📚</button>
+</nav>
 
-<!-- HOME -->
-<section id="home">
+<section id="home" class="active">
     <h1>Olsen World</h1>
     <div class="card">
-        Ton espace personnel. Ton univers. Ta création.
+        Ton espace numérique personnel.  
+        Un monde où tu crées tout.
     </div>
 </section>
 
-<!-- AI -->
-<section id="ai" style="display:none;">
+<section id="ai">
     <h2>IA Créative</h2>
     <div class="card">
-        <textarea placeholder="Écris ton idée ici..."></textarea>
-        <button class="btn">Générer (simulation)</button>
+        <textarea placeholder="Écris ton idée..."></textarea>
+        <button class="post">Générer (simulation IA)</button>
     </div>
 </section>
 
-<!-- POSTS -->
-<section id="posts" style="display:none;">
+<section id="posts">
     <h2>Posts</h2>
 
     <div class="card">
-        <textarea placeholder="Écris un post..."></textarea>
-        <button class="btn">Publier</button>
+        <textarea placeholder="Publie quelque chose..."></textarea>
+        <button class="post">Publier</button>
     </div>
 
-    <div class="post">Ton espace de publication apparaîtra ici.</div>
+    <div class="post">🔥 Ton futur feed apparaîtra ici</div>
 </section>
 
-<!-- LIBRARY -->
-<section id="library" style="display:none;">
+<section id="library">
     <h2>Librairie</h2>
-
     <div class="card">
         📘 Romans<br>
         📖 Histoires<br>
-        📄 Notes personnelles
+        📄 Notes personnelles<br>
+        📂 Téléchargements (futur)
     </div>
 </section>
 
 <script>
-function show(id){
-    document.querySelectorAll('section').forEach(s=>s.style.display="none");
-    document.getElementById(id).style.display="block";
+function go(id){
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 }
 </script>
 
