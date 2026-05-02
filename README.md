@@ -1,140 +1,138 @@
 # Olsen-site
-Site personnel — Le Jardin d’Olsen
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Olsen — Le Jardin Intérieur</title>
+<title>Olsen World</title>
 
 <style>
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at top, #1a0f2e, #000);
-    color: white;
-    overflow-x: hidden;
+    margin:0;
+    font-family: Arial;
+    background: #0a0a0f;
+    color:white;
 }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
+/* MENU */
+.menu {
+    position: fixed;
+    top:0;
+    width:100%;
+    background: rgba(20,20,30,0.9);
+    display:flex;
+    justify-content: space-around;
+    padding:15px;
+    backdrop-filter: blur(10px);
 }
 
-.hero h1 {
-    font-size: 4em;
-    letter-spacing: 3px;
-    text-shadow: 0 0 25px rgba(180,120,255,0.6);
-}
-
-.hero p {
-    opacity: 0.7;
-    margin-top: 10px;
-}
-
-/* IMAGE STYLE */
-.profile {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    border: 3px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 30px rgba(180,120,255,0.4);
-    object-fit: cover;
+.menu button {
+    background:none;
+    border:none;
+    color:white;
+    font-size:14px;
 }
 
 /* SECTIONS */
 section {
-    padding: 80px 20px;
-    max-width: 850px;
-    margin: auto;
+    padding:80px 20px;
+    max-width:900px;
+    margin:auto;
 }
 
 .card {
     background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    margin-top: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
 }
 
-/* BUTTONS */
+/* INPUT */
+textarea {
+    width:100%;
+    height:120px;
+    background:#111;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+}
+
+/* BUTTON */
 .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #7b4dff, #ff4df0);
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+    padding:10px 15px;
+    background:linear-gradient(90deg,#7a4dff,#ff4df0);
+    border:none;
+    color:white;
+    border-radius:20px;
+    margin-top:10px;
 }
 
-/* GLOW TEXT */
-.glow {
-    color: #caa6ff;
-    text-shadow: 0 0 15px rgba(202,166,255,0.6);
-}
-
-/* FLOAT EFFECT */
-@keyframes float {
-    0% {transform: translateY(0px);}
-    50% {transform: translateY(-10px);}
-    100% {transform: translateY(0px);}
-}
-
-.hero h1 {
-    animation: float 4s ease-in-out infinite;
+/* POSTS */
+.post {
+    background:#151520;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-    <!-- 🔥 Mets ici ta photo -->
-    <img src="https://via.placeholder.com/180" class="profile">
-
-    <h1>Olsen</h1>
-    <p>Je construis un monde dans ma tête, et je le rends réel.</p>
-
-    <a class="btn" href="https://www.tiktok.com" target="_blank">Voir mon TikTok</a>
+<div class="menu">
+    <button onclick="show('home')">🏠 Accueil</button>
+    <button onclick="show('ai')">🤖 IA</button>
+    <button onclick="show('posts')">📸 Posts</button>
+    <button onclick="show('library')">📚 Librairie</button>
 </div>
 
-<section>
-    <h2 class="glow">Mon Univers</h2>
+<!-- HOME -->
+<section id="home">
+    <h1>Olsen World</h1>
     <div class="card">
-        <p>
-        Je ne suis pas seulement une personne.  
-        Je suis une vision, un monde intérieur, une esthétique.
-        </p>
+        Ton espace personnel. Ton univers. Ta création.
     </div>
 </section>
 
-<section>
-    <h2 class="glow">Créations</h2>
+<!-- AI -->
+<section id="ai" style="display:none;">
+    <h2>IA Créative</h2>
     <div class="card">
-        <p>
-        Contenus, idées, images mentales, storytelling.  
-        Tout commence dans le silence.
-        </p>
+        <textarea placeholder="Écris ton idée ici..."></textarea>
+        <button class="btn">Générer (simulation)</button>
     </div>
 </section>
 
-<section>
-    <h2 class="glow">Réseaux</h2>
+<!-- POSTS -->
+<section id="posts" style="display:none;">
+    <h2>Posts</h2>
+
     <div class="card">
-        TikTok : @tonpseudo<br>
-        Instagram : @tonpseudo
+        <textarea placeholder="Écris un post..."></textarea>
+        <button class="btn">Publier</button>
+    </div>
+
+    <div class="post">Ton espace de publication apparaîtra ici.</div>
+</section>
+
+<!-- LIBRARY -->
+<section id="library" style="display:none;">
+    <h2>Librairie</h2>
+
+    <div class="card">
+        📘 Romans<br>
+        📖 Histoires<br>
+        📄 Notes personnelles
     </div>
 </section>
+
+<script>
+function show(id){
+    document.querySelectorAll('section').forEach(s=>s.style.display="none");
+    document.getElementById(id).style.display="block";
+}
+</script>
 
 </body>
 </html>
